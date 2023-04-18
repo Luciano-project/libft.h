@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strchr_test.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luccarva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 22:47:50 by luccarva          #+#    #+#             */
-/*   Updated: 2023/04/18 21:43:44 by luccarva         ###   ########.fr       */
+/*   Created: 2023/04/16 18:41:58 by luccarva          #+#    #+#             */
+/*   Updated: 2023/04/18 19:24:54 by luccarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+int	main()
 {
-	const char	*h;
-	const char	*n;
+	char	*s[5];
 
-	if (*needle == '\0' || needle == 0)
-		return ((char *) haystack);
-	while (*haystack && len > 0)
+	s[0] = "string";
+	s[1] = "ststr";
+	s[2] = "";
+	s[3] = "r";
+	s[4] = "12345r67890";
+
+	for (int i = 0; i < 5; i++)
 	{
-		h = haystack;
-		n = needle;
-		while (*n == *h && len > 0)
-		{
-			if (*n == '\0')
-				return ((char *) haystack);
-			n++;
-			h++;
-			len--;
-		}
-		haystack++;
+		printf("string: %s\n", s[i]);
+		printf("\toriginal: %s\n", strchr(s[i],'\0'));
+		printf("\t    mine: %s\n\n", ft_strchr(s[i],'\0'));
 	}
-	return (NULL);
 }

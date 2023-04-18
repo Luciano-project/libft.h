@@ -6,7 +6,7 @@
 /*   By: luccarva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 17:34:35 by luccarva          #+#    #+#             */
-/*   Updated: 2023/04/17 00:12:14 by luccarva         ###   ########.fr       */
+/*   Updated: 2023/04/18 22:49:08 by luccarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ int	ft_isalpha(int c);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
-char	*ft_strnstr(const char *big, const char *little, size_t len);
+char    *ft_strnstr(const char *haystack, const char *needle, size_t len);
+size_t	strlcpy(char *dst, const char *src, size_t size);
+
 #endif

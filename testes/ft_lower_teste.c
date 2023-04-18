@@ -1,37 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lower_teste.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luccarva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 22:47:50 by luccarva          #+#    #+#             */
-/*   Updated: 2023/04/18 21:43:44 by luccarva         ###   ########.fr       */
+/*   Created: 2023/04/16 18:17:32 by luccarva          #+#    #+#             */
+/*   Updated: 2023/04/16 18:21:51 by luccarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+//int	ft_tolower(int c);
+int	main()
 {
-	const char	*h;
-	const char	*n;
-
-	if (*needle == '\0' || needle == 0)
-		return ((char *) haystack);
-	while (*haystack && len > 0)
-	{
-		h = haystack;
-		n = needle;
-		while (*n == *h && len > 0)
-		{
-			if (*n == '\0')
-				return ((char *) haystack);
-			n++;
-			h++;
-			len--;
-		}
-		haystack++;
-	}
-	return (NULL);
+	printf("%d",ft_tolower('C'));
+	return (0);
 }
