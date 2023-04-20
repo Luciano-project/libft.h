@@ -11,3 +11,23 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
+{
+	size_t	leng;
+	
+	while(*dest++)
+		;
+	while(*src && size > 0)
+	{
+		*dest = (char *)src;
+		dest++;
+		src++;
+		size--;
+	}
+	*dest = '\';
+	leng = ft_strlen(dest - (size + 1));
+	if (leng == size)
+		return (size);
+	return(-1);
+}
