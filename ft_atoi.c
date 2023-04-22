@@ -10,29 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 int	ft_atoi(const char *nptr)
 {
-	int	num;
+	int	num[2];
 	
-	num = 0;
+	num[0] = 0; // value to be returned
+	num[1] = 1; // value to change signal
+	while (((*nptr >= 7 && *nptr <= 13) || (*nptr == 32)) || (*nptr == '-' || *nptr == '+'))
+		{
+			if (!(ft_isdigit(*(nptr + 1)) && num[0] == 0))
+				return (0);
+			if (*nptr == '-')
+				num[1] *= -1;
+			else if (*nptr == '+')
+				num[1] *= 1;
+			nptr++;
+		}
 	while (*nptr)
 	{
-		num += ((const char ) *nptr) - '0';
-		num *= 10;
+		if (!ft_isdigit(*nptr))
+			return ((num[1] * num[0]) / 10);
+		else
+			num[0] = (num[0] + (((const char ) *nptr) - '0')) * 10;
 		nptr++;
 	}
-	//printf("%d",num);
-	return (num / 10);
-}
-
-int	main(int argc, const char **argv)
-{
-	const char *string;
-	
-	string = argv[argc-1];
-	//printf("%s",string);
-	printf("%d\n",ft_atoi(string));
-	return (0);
+	return ((num[1] * num[0]) / 10);
 }
