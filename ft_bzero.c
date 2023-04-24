@@ -11,3 +11,14 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	char	*arr;
+	
+	arr = (char *) s; 
+	while (n--)
+	{
+		arr[n] = 0;
+	}
+}
