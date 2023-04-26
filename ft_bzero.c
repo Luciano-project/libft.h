@@ -6,7 +6,7 @@
 /*   By: luccarva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 22:48:37 by luccarva          #+#    #+#             */
-/*   Updated: 2023/04/16 21:58:21 by luccarva         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:17:56 by luccarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	ft_bzero(void *s, size_t n)
 {
 	char	*arr;
-	
-	arr = (char *) s; 
+
+	arr = (char *)s;
 	while (n--)
 	{
 		arr[n] = 0;

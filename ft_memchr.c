@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luccarva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 22:46:56 by luccarva          #+#    #+#             */
-/*   Updated: 2023/04/24 19:20:10 by luccarva         ###   ########.fr       */
+/*   Created: 2023/04/12 22:47:11 by luccarva          #+#    #+#             */
+/*   Updated: 2023/04/24 19:20:46 by luccarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*Return: a pointer to the byte located, 
+or NULL if no such byte exists within n bytes.*/
+
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	while (*s1 && *s2 && n > 0)
+	const unsigned char	*str;
+
+	str = s;
+	while (n > 0)
 	{
-		if (*s1 - *s2 > 0)
-			return (-1);
-		else if (*s1 - *s2 < 0)
-			return (1);
-		s1++;
-		s2++;
+		if (*str == (unsigned char) c)
+			return ((void *)str);
 		n--;
+		str++;
 	}
-	return (0);
+	return (NULL);
 }
