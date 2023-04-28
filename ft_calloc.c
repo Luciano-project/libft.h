@@ -11,5 +11,30 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*pntr;
+
+	pntr = malloc(size * nmemb);
+	if (!(pntr))
+		return (NULL);
+	ft_bzero(pntr, (nmemb * size));
+	return (pntr);
+}
+
+int	main(void)
+{
+	char	*pntr;
+
+	pntr = (char *)calloc(2, sizeof(char));
+	if (!(pntr))
+		return (0);
+
+	printf("%d\n", pntr[0]);
 
 
+	free(pntr);
+	return (0);
+}

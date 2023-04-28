@@ -28,6 +28,8 @@ char	*ft_itoa(int n)
 		leng = (sign * leng) + 1;
 	}
 	str = malloc(sizeof(char) * (leng + 1));
+	if (!(str))
+		return (NULL);
 	str[leng] = '\0';
 	while (leng > 0)
 	{
