@@ -19,7 +19,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	str = (unsigned char *)dest;
 	str2 = (unsigned char *)src;
-	while (n > 0)
+	while (*str && n > 0)
 	{
 		*str = *str2;
 		str++;

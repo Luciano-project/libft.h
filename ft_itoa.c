@@ -6,7 +6,7 @@
 /*   By: luccarva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 21:30:41 by luccarva          #+#    #+#             */
-/*   Updated: 2023/04/26 21:37:28 by luccarva         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:12:05 by luccarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,3 @@ static int	get_size_int(int n)
 	}
 	return (sign * (counter +1));
 }
-/*
-int     main()
-{
-    printf("############%s \n",ft_itoa(-2147483648));
-    return (0);
-}
-*/
