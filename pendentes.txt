@@ -1,0 +1,1 @@
+atoi, strlcat, strncmp, libftTester, isprint, putnbr_fd, substr, split, strnstr, strlcpy, toupper, fsoares, memset, memmove, strrchr, memcpy

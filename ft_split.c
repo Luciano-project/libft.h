@@ -12,64 +12,113 @@
 
 #include "libft.h"
 
-static int	cwords(const char *str, char c)
+static int	cwords(const char *s, char c)
 {
-	int	counter;
-	int	i;
-	int	occ;
+	size_t	counter;
+	int		words;
+	int		occurrences;
 
-	occ = 0;
-	i = 0;
-	counter = 0;
-	while (str[i])
+	occurrences = 0;
+	words = 0;
+	counter = -1;
+	while (s[++counter])
 	{
-		if (str[i] != c && occ == 0)
-		{
-			occ = 1;
-			counter++;
-		}
-		else if (str[i] == c)
-			occ = 0;
-		i++;
+		if (s[counter] != c && occurrences == 0)
+			{
+				occurrences = 1;
+				words++;
+			}
+		else if (s[counter] == c)
+			occurrences = 0;
 	}
-	return (counter);
+	return (words);
 }
 
-static char	*slicpy(const char *s, int cnt)
+static char	**slicing(char **str, const char *s, char c, int words)
 {
-	char	*slice;
+	size_t	counter;
+	size_t	start;
+	size_t	i;
+	char	*substr;
 
-	slice = ft_memcpy(malloc((cnt + 1) * sizeof(char)), (s - cnt), cnt);
-	if (!slice)
-		return (NULL);
-	slice[cnt + 1] = '\0';
-	return (slice);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**str;
-	int		cnt;
-	int		j;
-
-	j = 0;
-	str = malloc((cwords(s, c) + 1) * sizeof(char *));
-	if (!str)
-		return (NULL);
-	while (*s)
+	counter = 0;
+	start = 0;
+	printf("%ld\n", counter);
+	while(*s)
 	{
-		cnt = 0;
-		while (*s != c && *s)
+		i = 0;
+		if (*s != c && s + 1 != 0)
 		{
-			cnt++;
-			s++;
+			substr = malloc((sizeof(char) * (counter)) + 1);
+			if (!substr)
+				return (NULL);
+			while (counter > 0)
+			{
+				if (*s != c)
+					*substr++ = *(s - counter);
+				counter--;
+			}
+			printf("tamanho %ld\n", ft_strlen(substr));
+			substr[i] = 0;
+			printf("\tcounter: %ld\n\tstart: %ld\n", counter, start);
+			printf("%s\n", substr);
+			*str++ = substr;
 		}
-		if (cnt > 0)
-			str[j++] = slicpy(&(*s), cnt);
-		if (*s == '\0')
-			break ;
+		counter++;
 		s++;
 	}
-	str[j] = 0;
-	return (str);
+	return (str - words);
+}
+/*	size_t	counter;
+	int		words;
+	int		occurrences;
+	int		start;
+	int		end;
+
+	occurrences = 0;
+	words = 0;
+	counter = -1;
+	start = 0;
+	end = 0;
+	while (s[++counter])
+	{
+		if (s[counter] != c && occurrences == 0)
+			{
+				occurrences = 1;
+				start = counter;
+			}
+		else if (s[counter] == c)
+		{
+			occurrences = 0;
+			end = counter;
+			str[words] = ft_substr(s, start, end - start);
+			words++;
+		}
+	}
+	return (str);*/
+
+char	**ft_split(const char *s, char c)
+{
+	char	**str;
+	int		words;
+
+	words = cwords(s, c);
+	printf("%ld\n", (((sizeof(char *)) * words) + 1)); // OK
+	str = malloc(((sizeof(char *)) * words) + 1);
+	if (!str)
+		return (NULL);
+	str[words] = 0;
+	return (slicing(str, s, c, words));
+}
+
+int	main()
+{
+	char	**st;
+	int		counter;
+
+	counter = -1;
+	st = ft_split("hola que ", ' ');
+	while (st[++counter])
+		printf("%s||||||\n", st[counter]);
+	return (0);
 }

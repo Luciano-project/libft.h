@@ -12,7 +12,22 @@
 
 #include "libft.h"
 
-static int	get_size_int(int n);
+static int	get_size_int(int n)
+{
+	int	sign;
+	int	counter;
+
+	sign = 1;
+	counter = 0;
+	if (n < 0)
+		sign = -1;
+	while ((n > 9) || ((n < -9)))
+	{
+		n = n / 10;
+		counter++;
+	}
+	return (sign * (counter +1));
+}
 
 char	*ft_itoa(int n)
 {
@@ -39,21 +54,4 @@ char	*ft_itoa(int n)
 	if (sign == -1)
 	str[0] = '-';
 	return (str);
-}
-
-static int	get_size_int(int n)
-{
-	int	sign;
-	int	counter;
-
-	sign = 1;
-	counter = 0;
-	if (n < 0)
-		sign = -1;
-	while ((n > 9) || ((n < -9)))
-	{
-		n = n / 10;
-		counter++;
-	}
-	return (sign * (counter +1));
 }

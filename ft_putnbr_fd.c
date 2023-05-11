@@ -14,19 +14,26 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*strnb;
+	long int	nb;
+	char		c;
 
-	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2147483648", fd);
+	if (fd < 0)
 		return ;
-	}
-	if (n < 0)
+	nb = n;
+	if (nb < 0)
 	{
-		ft_putchar_fd('-');
-		n = -n;
+		write (fd, "-", 1);
+		nb *= -1;
 	}
-	strnb = ft_itoa(n);
-	ft_putstr_fd(strnb);
-	return ;
+	if (nb < 10)
+	{
+		c = nb + '0';
+		write(fd, &c, 1);
+	}
+	else
+	{
+		ft_putnbr_fd((nb / 10), fd);
+		c = nb % 10 + '0';
+		write(fd, &c, 1);
+	}
 }

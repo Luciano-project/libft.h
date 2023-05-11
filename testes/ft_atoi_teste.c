@@ -6,7 +6,7 @@ int	main(int argc, const char **argv)
 	
 	string = argv[argc-1];
 	//printf("%s",string);
-	printf("%d, %s\n",ft_atoi(string), string);
-	printf("%d, %s\n",atoi(string), string);
+	printf("%d\n",ft_atoi(string));
+	printf("%d\n",atoi(string));
 	return (0);
 }
