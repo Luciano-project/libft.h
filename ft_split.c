@@ -6,7 +6,7 @@
 /*   By: luccarva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 22:21:59 by luccarva          #+#    #+#             */
-/*   Updated: 2023/04/26 22:22:02 by luccarva         ###   ########.fr       */
+/*   Updated: 2023/05/13 13:17:02 by luccarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static char	*subst(const char *s, int i, int start)
 
 	idx = 0;
 	st = malloc((sizeof(char) * (i - start + 1)));
+	if (!st)
+		return (NULL);
 	while (start < i)
 		st[idx++] = s[start++];
 	st[idx] = '\0';
@@ -72,11 +74,11 @@ static char	**slicing(char **str, const char *s, char c, size_t counter)
 char	**ft_split(const char *s, char c)
 {
 	char	**str;
-	if(!s)
-		return(NULL);
+
+	if (!s)
+		return (NULL);
 	str = malloc((sizeof(char *)) * (cwords(s, c) + 1));
 	if (!str)
 		return (NULL);
 	return (slicing(str, s, c, 0));
 }
-

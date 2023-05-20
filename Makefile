@@ -21,9 +21,13 @@ SRCS =  ft_strtrim.c     ft_atoi.c         ft_isprint.c    ft_strlen.c\
 		ft_itoa.c        ft_split.c        ft_strjoin.c     ft_substr.c\
 		ft_strmapi.c     ft_striteri.c     ft_calloc.c      ft_strdup.c\
 		ft_memchr.c      ft_memcmp.c       ft_memset.c\
-		
+
+BONUS_SRCS = 	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c\
+		ft_lstdelone.c   ft_lstiter.c 	    ft_lstlast.c ft_lstmap.c\
+		ft_lstnew.c      ft_lstsize.c		
 
 OBJS	:= ${SRCS:.c=.o}
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 CC		:= gcc
 RM		:= /bin/rm -f
@@ -39,6 +43,9 @@ ${NAME}: ${OBJS}
 
 all: ${NAME}
 
+bonus: $(OBJS) $(BONUS_OBJS)
+	ar rc $(NAME) $(BONUS_OBJS) $(OBJS)
+
 clean:
 	${RM} ${OBJS}
 	echo 'Objects removed'
@@ -53,3 +60,8 @@ norm:
 	echo 'Running Norminette'
 	norminette -R CheckForbiddenSourceHeader *.c
 	norminette -R CheckDefine *.h
+
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(BONUS_SRCS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS) $(BONUS_OBJS)
+
